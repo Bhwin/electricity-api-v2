@@ -7,7 +7,7 @@ const loadData = (file) => JSON.parse(fs.readFileSync(`./data/${file}`,'utf8'));
 
 // 1. API: Total electricity usage for each year
 app.get('/api/usage/total-by-year', (req, res) => {
-    const data = loadData('electricity_usages_en 1.json');
+    const data = loadData('electricity_usages_en.json');
     const totals = data.reduce((acc, curr) => {
         const year = curr.year;
         const totalUsage = Object.keys(curr)
@@ -21,7 +21,7 @@ app.get('/api/usage/total-by-year', (req, res) => {
 });
 // 2. API: Total electricity users for each year
 app.get('/api/users/total-by-year', (req, res) => {
-    const data = loadData('electricity_users_en 1.json');
+    const data = loadData('electricity_users_en.json');
     const totals = data.reduce((acc, curr) => {
         const year = curr.year;
         const totalUsers = Object.keys(curr)
