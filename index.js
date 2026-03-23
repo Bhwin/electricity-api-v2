@@ -48,17 +48,21 @@ app.get('/api/users/:province/:year', (req, res) => {
     res.json(result || { message: "Data not found" });
 });
 // 5. API: Usage history for a specific province
-app.get('/api/usage/history/:province', (req, res) => {
+app.get('/api/pastusagehistory/:province', (req, res) => {
     const { province } = req.params;
     const data = loadData('electricity_usages_en.json');
     const result = data.filter(d => d.province_name.toLowerCase() === province.toLowerCase());
     res.json(result);
 });
 // 6. API: User history for a specific province
-app.get('/api/users/history/:province', (req, res) => {
+app.get('/api/pastusershistory/:province', (req, res) => {
     const { province } = req.params;
     const data = loadData('electricity_users_en.json');
     const result = data.filter(d => d.province_name.toLowerCase() === province.toLowerCase());
     res.json(result);
 });
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+module.exports = app; // Export for testing
