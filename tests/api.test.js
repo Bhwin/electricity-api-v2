@@ -1,12 +1,18 @@
 const request = require('supertest');
 const app = require('../index');
 describe('Electricity API Endpoints', () => {
-// Test Case 1: Total Usage
+// API 1: Total Usage (Valid)
     it('should return total electricity usage for all years', async () => {
         const res = await request(app).get('/api/usage/total-by-year');
         expect(res.status).toBe(200);
         expect(typeof res.body).toBe('object');
     });
+// API 1: Total Usage (Invalid)
+
+// API 2: Total User (Valid)
+
+// API 2: Total User (Invalid)
+
 // Test Case 2: Specific Province Usage
     it('should return electricity usage for a specific province and year', async () => {
         const res = await request(app).get('/api/usage/Alberta/2566');

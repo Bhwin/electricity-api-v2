@@ -24,3 +24,4 @@ jobs:
         run: |
           docker build -t electricity-api:prod-${{ github.sha }} .
           echo "Production image built successfully."
+        #make it able to push to docker hub
